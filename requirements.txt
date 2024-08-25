@@ -1,0 +1,8 @@
+yfinance~=0.2.40
+joblib~=1.4.2
+numpy~=2.0.0
+pandas~=2.2.2
+matplotlib~=3.9.0
+Flask~=3.0.3
+scikit-learn~=1.5.0
+plotly~=5.23.0
