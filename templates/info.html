@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Information - StockGeniusAI</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #8AB5FE;
+            color: #2d3748;
+            padding: 20px;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .section {
+            margin-bottom: 24px;
+        }
+
+        .btnback {
+            display: inline-block;
+            margin-top: 24px;
+            background-color: #467EDF;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .btn1 {
+            display: inline-block;
+            margin-top: 24px;
+            background-color: #467EDF;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .btn2 {
+            display: inline-block;
+            margin-top: 24px;
+            background-color: #467EDF;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .btnback:hover {
+            background-color: #0055C7;
+            transform: scale(1.1);
+        }
+
+        .btn1:hover {
+        background-color: #0055C7;
+        transform: scale(1.1);
+        }
+
+        .btn2:hover {
+        background-color: #0055C7;
+        transform: scale(1.1);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="header">Information</div>
+
+        <div class="section">
+            <h2><b>About Forecast Engine</b></h2>
+            <p>This is a subset of artificial intelligence (AI) that focuses on using historical data from Yahoo Finance to predict stock market movements. This Machine Learning model is trained to forecast whether stock prices will rise or fall the next day, helping determine optimal dates for buying or selling stocks.</p>
+        </div>
+
+        <div class="section">
+            <p><b>This model is trained to predict stock prices for the following companies:</b></p>
+            <ul>
+                <li>Apple Inc (AAPL)</li>
+                <li>Microsoft (MSFT)</li>
+                <li>Google (GOOGL)</li>
+                <li>Amazon (AMZN)</li>
+                <li>Meta (META)</li>
+                <li>Starbucks (SBUX)</li>
+                <li>McDonald's (MCD)</li>
+                <li>CVS Health (CVS)</li>
+                <li>Visa (V)</li>
+                <li>MasterCard (MA)</li>
+                <li>Adobe (ADBE)</li>
+                <li>China Petroleum (600028)</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2><b>Contact Us</b></h2>
+            <p>If you have any questions or would like to get in touch with us, feel free to reach out via the following channels:</p>
+            <ul>
+                <button class="btn1" onclick="emailUs()">Email Us</button>
+                <button class="btn2" onclick="callUs()">Call Us</button>
+            </ul>
+        </div>
+
+        <a href="/" class="btnback">&#8617;</a>
+    </div>
+
+    <script>
+    function emailUs() {
+        window.location.href = "mailto:irfanperibadi25@gmail.com";
+    }
+
+    function callUs() {
+        window.location.href = "tel:+601173478097";
+    }
+    </script>
+
+</body>
+</html>

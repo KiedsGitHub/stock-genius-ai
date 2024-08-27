@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StockGeniusAI</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='circle.ico') }}">
+    <style>
+        body {
+            background-color: #8AB5FE;
+            color: #2d3748;
+            padding: 20px;
+            font-family: 'Roboto', sans-serif;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transform: translateY(20px);
+            opacity: 0;
+            animation: slideIn 0.5s forwards;
+        }
+
+        .card-header {
+            background-color: #f7fafc;
+            border-bottom: none;
+            color: #2d3748;
+            border-radius: 12px 12px 0 0;
+            padding: 24px;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .form-control {
+            background-color: #edf2f7;
+            color: #2d3748;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 12px;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+        .form-control:focus {
+            background-color: #e2e8f0;
+            border-color: #cbd5e0;
+        }
+
+        .btn-primary {
+            background-color: #467EDF;
+            border: none;
+            border-radius: 6px;
+            padding: 12px 32px;
+            margin: 8px;
+            color: #ffffff;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            font-size: 1rem;
+        }
+
+        .btn-primary:hover {
+            background-color: #0055C7;
+            transform: scale(1.05);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #e2e8f0;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f7fafc;
+            font-weight: 600;
+        }
+
+        .footer {
+            font-style: italic;
+            color: #4a5568;
+            text-align: center;
+            margin-top: 24px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .fab {
+            position: fixed;
+            width: 56px;
+            height: 56px;
+            bottom: 20px;
+            right: 20px;
+            background-color: #467EDF;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            font-size: 24px;
+            line-height: 56px;
+            cursor: pointer;
+            z-index: 1000;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .fab:hover {
+            transform: scale(1.1);
+            background-color: #0055C7;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container mx-auto">
+        <div class="card shadow-lg">
+            <div class="card-header">
+                <h1>StockGeniusAI</h1>
+            </div>
+            <div class="card-body p-6">
+                <form action="/predict" method="post" class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                    <input type="text" name="ticker" placeholder="Enter stock ticker" class="form-control" required>
+                    <input type="number" name="future_days" placeholder="Days to predict" class="form-control" min="1">
+                    <input type="submit" value="Predict" class="btn-primary">
+                </form>
+
+                {% if error %}
+                <p class="error">{{ error }}</p>
+                {% endif %}
+
+                {% if data %}
+                <div class="result">
+                    <div id="plot"></div>
+                    <br>
+                    <h2>Best Buy Date: {{ data.best_buy_date }} at Price: {{ data.best_buy_price }}</h2>
+                    <h2>Best Sell Date: {{ data.best_sell_date }} at Price: {{ data.best_sell_price }}</h2>
+                    <script>
+                        var plotData = {{ data.plot1|safe }};
+                        Plotly.newPlot('plot', plotData.data, plotData.layout);
+                    </script>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <a href="/info" class="fab">&#8520;</a>
+
+    <div class="footer">
+        Developed by: <br> 1. MUHAMMAD ADAM IRFAN BIN SARBINI<br> 2. MOHD ZAIDIL ADHA BIN MAT HUSSIN <br> 3. TAN RHU CHOON
+    </div>
+
+</body>
+
+</html>
