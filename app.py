@@ -17,6 +17,10 @@ lr_model = joblib.load('models/lr_model.pkl')
 def home():
     return render_template('index.html')
 
+@app.route('/info')
+def info():
+    return render_template('info.html')
+
 @app.route('/predict', methods=['POST'])
 def predict():
     ticker = request.form.get('ticker')
